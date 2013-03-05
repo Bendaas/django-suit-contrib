@@ -127,6 +127,9 @@ INSTALLED_APPS = (
     # Django Suit
     'suit',
 
+    # For less compiling
+    'compressor',
+
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
