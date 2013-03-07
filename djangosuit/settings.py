@@ -128,7 +128,7 @@ INSTALLED_APPS = (
 
     # contrib-project app and examples
     'djangosuit',
-    # 'examples',
+    'examples',
 
     # Django Suit package
     'suit',
@@ -140,6 +140,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    # For examples app
+    'south',
+    'mptt',
+    'django_select2',
 )
 
 # A sample logging configuration. The only tangible logging
