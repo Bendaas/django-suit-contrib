@@ -1,5 +1,5 @@
-Djang Suit contribution
-=======================
+Django Suit contribution
+========================
 
 This repository is **for development, testing and contribution** of `Django Suit <http://djangosuit.com/>`_ project.
 
@@ -10,10 +10,10 @@ Read more: http://djangosuit.com/
 Documentation: http://django-suit.readthedocs.org/en/latest/
 
 
-How to setup contrib project
-============================
+How to setup Django Suit dev environment
+========================================
 
-How to setup contribution environment and project using `virtualenv` and `pip`
+How to setup environment and project using `virtualenv` and `pip`
 
 1. Requirements:
 
@@ -78,11 +78,11 @@ Less/css files handling
 
 Django Suit contrib package uses `django-compressor <https://github.com/jezdez/django_compressor>`_ for less compiling (actual compiling is done by ``lessc``).
 
-Whenever you change any of ``.less`` files, ``.css`` file is recompiled to cache andcopied to ``suit/static/suit/css/suit.css`` file. When contributing you should commit both - ``.less`` and ``suit.css`` files
+Whenever you change any ``.less`` files, on page reload ``.css`` file is recompiled to cache and also copied to ``suit/static/suit/css/suit.css``. When contributing you should commit both: ``.less`` and ``suit.css`` files.
 
 
 Notes
 -----
 
-Page load time for contrib project could be up to 500ms. Reason of this is ``.less`` files are recompiled on every request, otherwise django-compressor won't detect changes in @imported .less files, see `issue #274 <https://github.com/jezdez/django_compressor/issues/274>`_
+Page load time for contrib project could be up to 500ms. This happens because of ``.less`` files are recompiled on every request, otherwise django-compressor won't detect changes in @imported .less files, see `issue #274 <https://github.com/jezdez/django_compressor/issues/274>`_
 
