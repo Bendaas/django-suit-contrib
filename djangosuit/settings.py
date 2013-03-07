@@ -3,6 +3,7 @@ import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + '/../')
+ENV_ROOT = os.path.abspath(os.path.dirname(__file__) + '/../../')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -15,13 +16,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': PROJECT_ROOT + 'djangosuit.db',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '%s/djangosuit.db' % ENV_ROOT,
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -54,18 +54,18 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '%s/media/' % ENV_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '%s/static/' % ENV_ROOT
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -175,16 +175,17 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
 
-# Compressor for less files
+# Compressor config
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile} -x'),
 )
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter']
-# def test():
-#     return 'aaa'
-# COMPRESS_CACHE_KEY_FUNCTION = 'djangosuit.settings.test'
+COMPRESS_CSS_FILTERS = []
+COMPRESS_OUTPUT_DIR = 'suit'
 
+# Recompile always, otherwise @imports are not watched #274:
+# https://github.com/jezdez/django_compressor/issues/274
+COMPRESS_REBUILD_TIMEOUT = 1
 
 # Django Suit configuration
 SUIT_CONFIG = {

@@ -3,7 +3,7 @@ Djang Suit contrib project
 
 This repository is **for development**, testing and contribution of `Django Suit <http://djangosuit.com/>`_ project.
 
-Main repository is here: https://github.com/darklow/django-suit
+**Main repository is here**: https://github.com/darklow/django-suit
 
 Read more: http://djangosuit.com/
 
@@ -81,3 +81,10 @@ Django Suit contrib package uses `django-compressor <https://github.com/jezdez/d
 Whenever you change any of ``.less`` files, ``.css`` file is recompiled to cache. By ``post_compress() in compress.py`` signal handler css cache file is copied to ``suit/static/suit/css/suit.css`` file.
 
 When contributing you should commit both - ``.less`` and ``suit.css`` files
+
+
+Notes
+-----
+
+Page load time for contrib project could be up to 500ms. Reason of this is ``.less`` files are recompiled on every request, otherwise django-compressor won't detect changes in @imported .less files, see `issue #274 <https://github.com/jezdez/django_compressor/issues/274>`_
+
