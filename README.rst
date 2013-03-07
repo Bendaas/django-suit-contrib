@@ -15,9 +15,17 @@ How to setup contrib project
 
 How to setup contribution environment and project using `virtualenv` and `pip`
 
-1. Setup project environment:
+1. Requirements:
 
-    # Environment root
+  * Django 1.4/1.5
+  * Python 2.6.6 - 3.3.0
+  * lessc compiler - http://lesscss.org/
+  * package requirements are in ``requirements.txt``
+  * pip (or if you know alternative commands you can use ``easy_install``)
+
+2. Setup project environment::
+
+    # Create environment/project main directory
     mkdir djangosuit-contrib
     cd djangosuit-contrib
 
@@ -31,10 +39,13 @@ How to setup contribution environment and project using `virtualenv` and `pip`
     git clone https://bitbucket.org/darklow/django-suit-contrib.git djangosuit
     cd djangosuit
 
+    # Clone Django Suit examples app
+    git clone https://github.com/darklow/darklow-suit-examaples/tarball/master example
+
     # Install requirements
     pip install -r requirements.txt
 
-2. Fork django-suit repo on Github and run following:
+3. Fork django-suit repo on Github and do following::
 
     # Clone forked Django Suit repo
     git clone git://github.com/darklow/django-suit.git suit
@@ -42,3 +53,31 @@ How to setup contribution environment and project using `virtualenv` and `pip`
     # Install Django Suit from local fork
     pip install -e suit
 
+    # Sync Django DB
+    ./manage.py syncdb
+
+4. Now project is setup and you can use ``manage.py`` to start server::
+
+    ./manage.py runserver
+
+5. Now go to ``/admin/`` and you should see login form
+
+
+Structure
+---------
+
+1. ``suit/`` - whole Django Suit package
+2. ``suit/suit/`` - Django Suit app
+2. ``suit/docs/`` - Django Suit Sphinx documentation
+3. ``suit/suit/static/suit/less`` - Less files directory (Do not change CSS files directly)
+4. You can also contribute to ``examples`` app, in that case fork it first
+
+
+Less/css files handling
+-----------------------
+
+Django Suit contrib package uses `django-compressor <https://github.com/jezdez/django_compressor>`_ for less compiling (actual compiling is done by ``lessc``).
+
+Whenever you change any of ``.less`` files, ``.css`` file is recompiled to cache. By ``post_compress() in compress.py`` signal handler css cache file is copied to ``suit/static/suit/css/suit.css`` file.
+
+When contributing you should commit both - ``.less`` and ``suit.css`` files

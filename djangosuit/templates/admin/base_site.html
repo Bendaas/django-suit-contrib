@@ -1,0 +1,9 @@
+{% extends 'admin/base.html' %}
+{% load compress admin_static %}
+
+{# Additional CSS includes #}
+{% block extrastyle %}
+  {% compress css %}
+    <link type="text/less" rel="stylesheet" href="/static/suit/less/suit.less" charset="utf-8">
+  {% endcompress %}
+{% endblock %}

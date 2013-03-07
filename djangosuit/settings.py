@@ -84,6 +84,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -125,7 +126,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Django Suit
+    # contrib-project app and examples
+    'djangosuit',
+    # 'examples',
+
+    # Django Suit package
     'suit',
 
     # For less compiling
@@ -169,3 +174,46 @@ LOGGING = {
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
+
+# Compressor for less files
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile} -x'),
+)
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter']
+# def test():
+#     return 'aaa'
+# COMPRESS_CACHE_KEY_FUNCTION = 'djangosuit.settings.test'
+
+
+# Django Suit configuration
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Django Suit Contrib',
+    # 'HEADER_DATE_FORMAT': 'l, j. F Y',
+    # 'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+    # 'SHOW_REQUIRED_ASTERISK': False,  # Default True
+    # 'CONFIRM_UNSAVED_CHANGES': False, # Default True
+
+    # menu
+    # 'SEARCH_URL': 'admin:examples_country_changelist',
+    'MENU_ICONS': {
+        'auth': 'icon-lock',
+        'examples': 'icon-leaf',
+        'integrations': 'icon-globe',
+    },
+    'MENU_ORDER': (
+        ('examples', ('country', 'continent', 'kitchensink')),
+        (('Integrations', '', 'icon-globe'),
+         ('examples.city', 'examples.category')),
+        ('auth', ('user', 'group')),
+        (('Custom view', '/admin/custom/', 'icon-cog', ('auth.add_group',)), (
+            ('Custom link', '/admin/custom/'),
+            ('Check out error 404', '/admin/non-existant/'),
+        )),
+    ),
+
+    # misc
+    'LIST_PER_PAGE': 15
+}
