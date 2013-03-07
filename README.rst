@@ -48,7 +48,7 @@ How to setup contribution environment and project using `virtualenv` and `pip`
 3. Fork django-suit repo on Github and do following::
 
     # Clone forked Django Suit repo
-    git clone git://github.com/YOUR_NAME/django-suit.git suit
+    git clone git@github.com:YOUR_USERNAME/django-suit.git suit
 
     # Install Django Suit from local fork
     pip install -e suit
