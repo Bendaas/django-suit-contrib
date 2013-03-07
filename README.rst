@@ -1,7 +1,7 @@
-Djang Suit contrib project
-==========================
+Djang Suit contribution
+=======================
 
-This repository is **for development**, testing and contribution of `Django Suit <http://djangosuit.com/>`_ project.
+This repository is **for development, testing and contribution** of `Django Suit <http://djangosuit.com/>`_ project.
 
 **Main repository is here**: https://github.com/darklow/django-suit
 
@@ -36,7 +36,7 @@ How to setup contribution environment and project using `virtualenv` and `pip`
     . env/bin/activate
 
     # Clone Django Suit contrib project
-    git clone https://bitbucket.org/darklow/django-suit-contrib.git djangosuit
+    git clone https://github.com/darklow/django-suit-contrib.git djangosuit
     cd djangosuit
 
     # Clone Django Suit examples app
@@ -48,7 +48,7 @@ How to setup contribution environment and project using `virtualenv` and `pip`
 3. Fork django-suit repo on Github and do following::
 
     # Clone forked Django Suit repo
-    git clone git://github.com/darklow/django-suit.git suit
+    git clone git://github.com/YOUR_NAME/django-suit.git suit
 
     # Install Django Suit from local fork
     pip install -e suit
@@ -68,9 +68,9 @@ Structure
 
 1. ``suit/`` - whole Django Suit package
 2. ``suit/suit/`` - Django Suit app
-2. ``suit/docs/`` - Django Suit Sphinx documentation
-3. ``suit/suit/static/suit/less`` - Less files directory (Do not change CSS files directly)
-4. You can also contribute to ``examples`` app, in that case fork it first
+3. ``suit/docs/`` - Django Suit Sphinx documentation
+4. ``suit/suit/static/suit/less`` - Less files directory (Do not change CSS files directly)
+5. You can also contribute to ``examples`` app, in that case fork it first
 
 
 Less/css files handling
@@ -78,9 +78,7 @@ Less/css files handling
 
 Django Suit contrib package uses `django-compressor <https://github.com/jezdez/django_compressor>`_ for less compiling (actual compiling is done by ``lessc``).
 
-Whenever you change any of ``.less`` files, ``.css`` file is recompiled to cache. By ``post_compress() in compress.py`` signal handler css cache file is copied to ``suit/static/suit/css/suit.css`` file.
-
-When contributing you should commit both - ``.less`` and ``suit.css`` files
+Whenever you change any of ``.less`` files, ``.css`` file is recompiled to cache andcopied to ``suit/static/suit/css/suit.css`` file. When contributing you should commit both - ``.less`` and ``suit.css`` files
 
 
 Notes
