@@ -40,7 +40,7 @@ How to setup contribution environment and project using `virtualenv` and `pip`
     cd djangosuit
 
     # Clone Django Suit examples app
-    git clone https://github.com/darklow/darklow-suit-examaples/tarball/master example
+    git clone https://github.com/darklow/django-suit-examples.git examples
 
     # Install requirements
     pip install -r requirements.txt
@@ -56,7 +56,7 @@ How to setup contribution environment and project using `virtualenv` and `pip`
     # Sync Django DB
     ./manage.py syncdb
 
-4. Now project is setup and you can use ``manage.py`` to start server::
+4. Now project is ready and you can use ``manage.py`` to start server::
 
     ./manage.py runserver
 
