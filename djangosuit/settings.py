@@ -1,5 +1,6 @@
 # Django settings for djangosuit project.
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + '/../')
 
@@ -164,3 +165,7 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
